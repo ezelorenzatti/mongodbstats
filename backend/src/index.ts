@@ -1,4 +1,4 @@
-import express, {NextFunction, Request, Response} from 'express';
+import express, {Request, Response} from 'express';
 import {MongoClient, MongoClientOptions} from 'mongodb';
 
 const app = express();
@@ -97,7 +97,7 @@ app.get('/stats', async (req: Request, res: Response) => {
     }
 });
 
-app.use((req: Request, res: Response, next: NextFunction) => {
+app.use((req: Request, res: Response) => {
     const errorMessage = 'Endpoint not found';
     console.error(errorMessage);
     res.status(404).json({error: errorMessage});
