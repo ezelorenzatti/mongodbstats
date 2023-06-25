@@ -14,7 +14,7 @@ app.get('/stats', async (req: Request, res: Response) => {
         tls
     } = req.query;
 
-    if (typeof url !== 'string' || url === '') {
+    if (!(Array.isArray(url) || typeof url === 'string')) {
         const errorMessage = 'Invalid URL parameter';
         console.error(errorMessage);
         return res.status(400).json({error: errorMessage});
